@@ -10,3 +10,4 @@
 - `reducer_spec`, reduced repetition. Could I reduce it more? (hehe, reduce) 
 - Simplifying reducer spec by bringing in core = maybe not such a good idea
 - [Reducer composition](http://rackt.github.io/redux/docs/basics/Reducers.html) FTW
+- Is this whole "store is the only mutable variable" just a clever way to sneak in some functional memory layout that never got out of the academia?
