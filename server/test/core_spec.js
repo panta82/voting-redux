@@ -43,6 +43,51 @@ describe('application logic', () => {
 				entries: List.of('C')
 			}));
 		});
+
+		it('puts the winner back to entries', () => {
+			const state = Map({
+				vote: Map({
+					pair: List.of('A', 'B'),
+					tally: Map({
+						'A': 4,
+						'B': 2
+					})
+				}),
+				entries: List.of('C', 'D', 'E')
+			});
+
+			const nextState = next(state);
+
+			expect(nextState).to.equal(Map({
+				vote: Map({
+					pair: List.of('C', 'D')
+				}),
+				entries: List.of('E', 'A')
+			}));
+		});
+
+		it('puts both tied contestants back to entries', () => {
+			const state = Map({
+				vote: Map({
+					pair: List.of('A', 'B'),
+					tally: Map({
+						'A': 5,
+						'B': 5
+					})
+				}),
+				entries: List.of('C', 'D', 'E')
+			});
+
+			const nextState = next(state);
+
+			expect(nextState).to.equal(Map({
+				vote: Map({
+					pair: List.of('C', 'D')
+				}),
+				entries: List.of('E', 'A', 'B')
+			}));
+		});
+
 	});
 
 	describe('vote', () => {
