@@ -40,11 +40,11 @@ describe('reducer', () => {
 			entries: []
 		});
 		const action = {type: ACTIONS.VOTE, entry: 'B'};
-		const expected = vote(initialState, 'B');
+		const expected = vote(initialState.get('vote'), 'B');
 
 		const reduced = reducer(initialState, action);
 
-		expect(expected).to.equal(reduced);
+		expect(expected).to.equal(reduced.get('vote'));
 	});
 
 	it('handles an initial state', () => {

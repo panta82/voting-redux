@@ -8,3 +8,4 @@
 - Strings everywhere. Is there a way to use more literals or classes, so that IDE can help out?
 - No debugger for node js. Server side babel = terrible idea
 - `reducer_spec`, reduced repetition. Could reduce it more? (hehe, reduce) 
+- Simplifying reducer spec by bringing in core = maybe not such good idea
