@@ -26,9 +26,11 @@ describe('immutability', () => {
 		it('is immutable', () => {
 			let state = List.of('A', 'B');
 			let next = addMovie(state, 'C');
+			let next2 = addMovie(state, 'C');
 
 			expect(state).to.equal(List.of('A', 'B'));
 			expect(next).to.equal(List.of('A', 'B', 'C'));
+			expect(next2).to.equal(List.of('A', 'B', 'C'));
 		});
 	});
 
