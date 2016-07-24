@@ -38,6 +38,7 @@ describe('application logic', () => {
 
 			expect(nextState).to.equal(Map({
 				vote: Map({
+					round: 1,
 					pair: List.of('A', 'B')
 				}),
 				entries: List.of('C')
@@ -47,6 +48,7 @@ describe('application logic', () => {
 		it('puts the winner back to entries', () => {
 			const state = Map({
 				vote: Map({
+					round: 1,
 					pair: List.of('A', 'B'),
 					tally: Map({
 						'A': 4,
@@ -60,6 +62,7 @@ describe('application logic', () => {
 
 			expect(nextState).to.equal(Map({
 				vote: Map({
+					round: 2,
 					pair: List.of('C', 'D')
 				}),
 				entries: List.of('E', 'A')
@@ -69,6 +72,7 @@ describe('application logic', () => {
 		it('puts both tied contestants back to entries', () => {
 			const state = Map({
 				vote: Map({
+					round: 1,
 					pair: List.of('A', 'B'),
 					tally: Map({
 						'A': 5,
@@ -82,6 +86,7 @@ describe('application logic', () => {
 
 			expect(nextState).to.equal(Map({
 				vote: Map({
+					round: 2,
 					pair: List.of('C', 'D')
 				}),
 				entries: List.of('E', 'A', 'B')
@@ -92,6 +97,7 @@ describe('application logic', () => {
 		it('marks winner when only one entry left', () => {
 			const state = Map({
 				vote: Map({
+					round: 1,
 					pair: List.of('A', 'B'),
 					tally: Map({
 						'A': 6,
@@ -113,12 +119,14 @@ describe('application logic', () => {
 	describe('vote', () => {
 		it('creates a tally for the voted entry', () => {
 			const state = Map({
+				round: 1,
 				pair: List.of('A', 'B')
 			});
 
 			const nextState = vote(state, 'B');
 
 			expect(nextState).to.equal(Map({
+				round: 1,
 				pair: List.of('A', 'B'),
 				tally: Map({
 					'B': 1
@@ -128,6 +136,7 @@ describe('application logic', () => {
 
 		it('adds to existing tally for the voted entry', () => {
 			const state = Map({
+				round: 1,
 				pair: List.of('A', 'B'),
 				tally: Map({
 					'A': 3,
@@ -138,6 +147,7 @@ describe('application logic', () => {
 			const nextState = vote(state, 'A');
 
 			expect(nextState).to.equal(Map({
+				round: 1,
 				pair: List.of('A', 'B'),
 				tally: Map({
 					'A': 4,
@@ -148,6 +158,7 @@ describe('application logic', () => {
 
 		it(`doesn't update tally for invalid votes`, () => {
 			const state = fromJS({
+				round: 1,
 				pair: ['A', 'B'],
 				tally: {
 					'A': 3,
@@ -158,6 +169,7 @@ describe('application logic', () => {
 			const nextState = vote(state, 'C');
 
 			expect(nextState).to.equal(fromJS({
+				round: 1,
 				pair: ['A', 'B'],
 				tally: {
 					'A': 3,

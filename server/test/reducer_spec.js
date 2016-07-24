@@ -22,6 +22,7 @@ describe('reducer', () => {
 
 	it('handles ' + ACTIONS.NEXT, () => {
 		const initialState = fromJS({
+			round: 1,
 			entries: ['A', 'B']
 		});
 		const action = {type: ACTIONS.NEXT};
@@ -35,6 +36,7 @@ describe('reducer', () => {
 	it('handles ' + ACTIONS.VOTE, () => {
 		const initialState = fromJS({
 			vote: {
+				round: 1,
 				pair: ['A', 'B']
 			},
 			entries: []

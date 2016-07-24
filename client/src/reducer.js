@@ -15,8 +15,12 @@ function setState(state, newState) {
 function vote(state, entry) {
 	/** @type {List} pair */
 	const pair = state.getIn(['vote', 'pair']);
+	const round = state.getIn(['vote', 'round']);
 	if (pair && pair.includes(entry)) {
-		return state.set('hasVoted', entry);
+		return state.set('myVote', Map({
+			round: round,
+			entry
+		}));
 	}
 	return state;
 }
@@ -25,12 +29,12 @@ function vote(state, entry) {
  * @param {Map} state
  */
 function resetVote(state) {
-	const hasVoted = state.get('hasVoted');
-	const pair = state.getIn(['vote', 'pair'], List());
-	if (hasVoted && !pair.includes(hasVoted)) {
-		return state.remove('hasVoted');
+	const votedForRound = state.getIn(['myVote', 'round']);
+	const currentRound = state.getIn(['vote', 'round']);
+	if (votedForRound === currentRound) {
+		return state;
 	}
-	return state;
+	return state.remove('myVote');
 }
 
 export default function reducer(state = Map(), action) {

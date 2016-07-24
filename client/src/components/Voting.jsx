@@ -28,6 +28,6 @@ export const VotingContainer = connect(state => {
 	return {
 		pair: state.getIn(['vote', 'pair']),
 		winner: state.get('winner'),
-		hasVoted: state.get('hasVoted')
+		hasVoted: state.getIn(['myVote', 'entry'])
 	};
 }, actionCreators)(Voting);

@@ -48,18 +48,23 @@ describe('reducer', () => {
 			});
 		});
 
-		it(`doesn't remove hasVoted if pair remains the same`, () => {
+		it(`doesn't remove myVote if pair remains the same`, () => {
 			const state = fromJS({
 				vote: {
 					pair: ['A', 'B'],
-					tally: { 'A': 1 }
+					tally: { 'A': 1 },
+					round: 1
 				},
-				hasVoted: 'A'
+				myVote: {
+					entry: 'A',
+					round: 1
+				}
 			});
 			const action = {type: ACTIONS.SET_STATE, state: {
 				vote: {
 					pair: ['A', 'B'],
-					tally: { 'A': 2 }
+					tally: { 'A': 2 },
+					round: 1
 				}
 			}};
 
@@ -68,23 +73,32 @@ describe('reducer', () => {
 			expect(nextState).to.equal(fromJS({
 				vote: {
 					pair: ['A', 'B'],
-					tally: { 'A': 2 }
+					tally: { 'A': 2 },
+					round: 1
 				},
-				hasVoted: 'A'
+				myVote: {
+					entry: 'A',
+					round: 1
+				}
 			}));
 		});
 
-		it(`removes hasVoted if pair changes`, () => {
+		it(`removes myVote if pair changes`, () => {
 			const state = fromJS({
 				vote: {
 					pair: ['A', 'B'],
-					tally: { 'A': 1 }
+					tally: { 'A': 1 },
+					round: 1
 				},
-				hasVoted: 'B'
+				myVote: {
+					entry: 'A',
+					round: 1
+				}
 			});
 			const action = {type: ACTIONS.SET_STATE, state: {
 				vote: {
-					pair: ['C', 'D']
+					pair: ['C', 'D'],
+					round: 2
 				}
 			}};
 
@@ -92,16 +106,18 @@ describe('reducer', () => {
 
 			expect(nextState).to.equal(fromJS({
 				vote: {
-					pair: ['C', 'D']
+					pair: ['C', 'D'],
+					round: 2
 				}
 			}));
 		});
 	});
 
 	describe('on ' + ACTIONS.VOTE, () => {
-		it('sets hasVoted', () => {
+		it('sets myVote', () => {
 			const state = fromJS({
 				vote: {
+					round: 42,
 					pair: ['A', 'B'],
 					tally: { 'A': 1 }
 				}
@@ -112,16 +128,21 @@ describe('reducer', () => {
 
 			expect(nextState).to.equal(fromJS({
 				vote: {
+					round: 42,
 					pair: ['A', 'B'],
 					tally: { 'A': 1 }
 				},
-				hasVoted: 'A'
+				myVote: {
+					round: 42,
+					entry: 'A'
+				}
 			}));
 		});
 
-		it(`doesn't set hasVoted on invalid entry`, () => {
+		it(`doesn't set myVote on invalid entry`, () => {
 			const state = fromJS({
 				vote: {
+					round: 42,
 					pair: ['A', 'B'],
 					tally: { 'A': 1 }
 				}
@@ -132,6 +153,7 @@ describe('reducer', () => {
 
 			expect(nextState).to.equal(fromJS({
 				vote: {
+					round: 42,
 					pair: ['A', 'B'],
 					tally: { 'A': 1 }
 				}
