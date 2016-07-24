@@ -20,6 +20,7 @@ describe('store', () => {
 		});
 
 		expect(store.getState()).to.equal(fromJS({
+			initialEntries: ['A', 'B'],
 			entries: ['A', 'B']
 		}));
 	});

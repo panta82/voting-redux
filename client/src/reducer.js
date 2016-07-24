@@ -1,11 +1,24 @@
 "use strict";
 
-import {Map, List} from 'immutable';
+import {Map, List, fromJS} from 'immutable';
 
 import ACTIONS from './actions';
 
 function setState(state, newState) {
-	return state.merge(state, newState);
+	newState = fromJS(newState);
+
+	let nextEntries = newState.get('entries');
+	let prevEntries = state.get('entries');
+	if (nextEntries && prevEntries && nextEntries.count() > prevEntries.count()) {
+		// Restart
+		state = state
+			.remove('myVote')
+			.remove('vote')
+			.remove('tally')
+			.remove('winner');
+	}
+
+	return state.merge(newState);
 }
 
 /**

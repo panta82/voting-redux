@@ -53,6 +53,7 @@ describe('reducer', () => {
 		const action = {type: ACTIONS.SET_ENTRIES, entries: ['A']};
 		const nextState = reducer(undefined, action);
 		expect(nextState).to.equal(fromJS({
+			initialEntries: ['A'],
 			entries: ['A']
 		}));
 	});
@@ -70,6 +71,7 @@ describe('reducer', () => {
 		const finalState = actions.reduce(reducer, Map());
 
 		expect(finalState).to.equal(fromJS({
+			initialEntries: ['A', 'B'],
 			winner: 'A'
 		}));
 	});

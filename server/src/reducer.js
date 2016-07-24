@@ -2,7 +2,7 @@
 
 import ACTIONS from './actions';
 
-import {setEntries, next, vote, INITIAL_STATE} from '../src/core';
+import {setEntries, next, vote, restart, INITIAL_STATE} from '../src/core';
 
 /**
  * @param {Map} state
@@ -18,6 +18,11 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 		case ACTIONS.VOTE:
 			return state.update('vote', vs => vote(vs, action.entry));
+
+		case ACTIONS.RESTART:
+			let newState = next(restart(state));
+			console.log(newState.toJSON());
+			return newState;
 	}
 	return state;
 }

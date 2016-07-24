@@ -21,3 +21,10 @@ export function next() {
 		type: ACTIONS.NEXT
 	};
 }
+
+export function restart() {
+	return {
+		meta: {remote: true},
+		type: ACTIONS.RESTART
+	};
+}

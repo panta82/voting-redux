@@ -13,6 +13,7 @@ describe('application logic', () => {
 			const nextState = setEntries(state, entries);
 
 			expect(nextState).to.equal(Map({
+				initialEntries: List.of('A', 'B'),
 				entries: List.of('A', 'B')
 			}));
 		});
@@ -23,6 +24,21 @@ describe('application logic', () => {
 			const nextState = setEntries(state, entries);
 
 			expect(nextState).to.equal(Map({
+				initialEntries: List.of('A', 'B'),
+				entries: List.of('A', 'B')
+			}));
+		});
+
+		it(`doesn't change initialEntries`, () => {
+			const state = fromJS({
+				initialEntries: ['C', 'D'],
+				entries: ['C', 'D']
+			});
+			const entries = ['A', 'B'];
+			const nextState = setEntries(state, entries);
+
+			expect(nextState).to.equal(Map({
+				initialEntries: List.of('C', 'D'),
 				entries: List.of('A', 'B')
 			}));
 		});

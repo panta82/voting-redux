@@ -62,4 +62,5 @@ export default {
 - Added `doesn't remove hasVoted if pair remains the same` unit test, after a bug fix.
 - Would it make sense to separate `Foo` component and `FooContainer` into their own files? 
 - Security method in excecise 3 isn't all that impressive, but I guess it would stop a casual cheater.
-
+- Stupid immutable objects make everything harder.
+- Restart was more difficult to add than anticipated.

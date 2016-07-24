@@ -10,7 +10,11 @@ export const INITIAL_STATE = Map();
  * @returns {*}
  */
 export function setEntries(state, entries) {
-	return state.set('entries', List(entries));
+	entries = List(entries);
+	if (!state.get('initialEntries')) {
+		state = state.set('initialEntries', entries);
+	}
+	return state.set('entries', entries);
 }
 
 /**
@@ -71,4 +75,15 @@ export function vote(state, entry) {
 		0,
 		tally => tally + 1
 	);
+}
+
+/**
+ * @param {Map} state
+ */
+export function restart(state) {
+	return state
+		.remove('tally')
+		.remove('vote')
+		.remove('winner')
+		.set('entries', state.get('initialEntries'));
 }

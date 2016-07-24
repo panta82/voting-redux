@@ -15,6 +15,7 @@ export default function startServer(store, port = 8090) {
 	});
 
 	io.on('connection', socket => {
+		console.log('Hello, ', socket.id);
 		socket.emit('state', store.getState().toJS());
 		socket.on('action', store.dispatch.bind(store));
 	});
