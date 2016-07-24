@@ -4,11 +4,18 @@
 
 #### Notes:
 
-- Using `action`s const instead of strings everywhere
+- I'll replace hardcoded `action` strings with the hash-as-enum pattern.
+```
+export default {
+	SET_ENTRIES: 'SET_ENTRIES',
+	NEXT: 'NEXT',
+	VOTE: 'VOTE'
+};
+```
 - Strings everywhere. Is there a way to use more literals or classes, so that IDE can help out?
 - No debugger for node js. Server side babel = terrible idea
-- `reducer_spec`, reduced repetition. Could I reduce it more? (hehe, reduce) 
-- Simplifying reducer spec by bringing in core = maybe not such a good idea
+- In `reducer_spec`, I tried to reduce repetition. Could I reduce it more? (hehe, reduce) 
+- Simplifying reducer spec by bringing in core.js was maybe not such a good idea
 - [Reducer composition](http://rackt.github.io/redux/docs/basics/Reducers.html) FTW
 - Is this whole "store is the only mutable variable" thing just a clever way to sneak in some functional memory layout that never got out of the academia?
 - Why did ES6 have to go with `import x from 'y'`? Python's `from y import x` is so much better for intellisense. Didn't they learn anything from SQL?
@@ -25,3 +32,11 @@
 - Why is the author consistently adding parenthesis around single argument lambdas? You can just do `x => use(x)`.
 - If you already set up a whole testing  workflow and write a complicated unit test, at least perform multiple asserts. Don't do just one.
 - Unlike business logic testing, UX testing feels like pointless busywork.
+- `devtool: 'source-map'` in webpack config, to enable browser debugging
+- > Notice that we added a ref for the Winner component. It's something we'll use in unit tests to grab the corresponding DOM node.
+
+    This smells. Adding crap to your code to hook in tests later. But, sometimes, there is no other way...
+- `react-addons-test-utils` API is amazingly ugly. Why not jQuery? This kind of API should be a solved problem by now.
+- JetBrains IDE-s can't deal with code like `expect(winner).to.be.ok;`.
+    Crappy solution: add `//noinspection BadExpressionStatementJS` before the statement.
+    Good solution: ???
