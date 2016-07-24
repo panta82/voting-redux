@@ -40,3 +40,6 @@ export default {
 - JetBrains IDE-s can't deal with code like `expect(winner).to.be.ok;`.
     Crappy solution: add `//noinspection BadExpressionStatementJS` before the statement.
     Good solution: ???
+- You need to have `import React from 'react';`, even if you're not actually using the `React` object. I guess JSX presumes there is global "React" thing? Or something?
+- I blew my single inheritance allowance on `PureComponent` that encapsulates the clunky `shouldComponentUpdate` setup.
+- Pure components seem to be the *real* reason to use immutable in react. Doesn't leave much of a reason on the server, though.

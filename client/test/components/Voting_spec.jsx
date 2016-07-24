@@ -65,4 +65,20 @@ describe('Voting', () => {
 		expect(winner).to.be.ok;
 		expect(winner.textContent).to.contain('A');
 	});
+
+	it('renders as pure component', () => {
+		const pair = ['A', 'B'];
+		const component = renderIntoDocument(
+			<Voting pair={pair}/>
+		);
+		let button = scryRenderedDOMComponentsWithTag(component, 'button')[0];
+
+		expect(button.textContent).to.equal('A');
+
+		pair[0] = 'C';
+		button = scryRenderedDOMComponentsWithTag(component, 'button')[0];
+
+		// No change, because react expected the pair to be immutable
+		expect(button.textContent).to.equal('A');
+	});
 });

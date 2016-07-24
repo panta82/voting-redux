@@ -1,8 +1,9 @@
 "use strict";
 
 import React from 'react';
+import PureComponent from './PureComponent';
 
-export default class Vote extends React.Component {
+export default class Vote extends PureComponent {
 	getPair () {
 		return this.props.pair || [];
 	}
