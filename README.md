@@ -44,3 +44,9 @@ export default {
 - I blew my single inheritance allowance on `PureComponent` that encapsulates the clunky `shouldComponentUpdate` setup.
 - Pure components seem to be the *real* reason to use immutable in react. Doesn't leave much of a reason on the server, though.
 - Despite best effort, no way to make babel compiled code debugable in JetBrains tools. Not even frontend code. This sucks.
+- I reduced repetition in tests by adding some internal helper functions. This is a slippery slope, leading to tests being super complicated and inscrutable. But I just don't like to type that much :/
+- Hot reloads of `index.jsx` don't work. According to [this](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md):
+    
+    > If you get this warning when editing a root component, this may be because you don't export anything from it, and call React.render from there. Put your root component in a separate file (e.g. App.jsx) and require it from index.js where you call React.render.
+    
+    TODO: Move most of the stuff outside of `index.jsx`

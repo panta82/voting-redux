@@ -1,12 +1,14 @@
 "use strict";
 
 import React from 'react';
+import {connect} from 'react-redux';
+
 import PureComponent from './PureComponent';
 
 import Vote from './Vote';
 import Winner from './Winner';
 
-export default class Voting extends PureComponent {
+export class Voting extends PureComponent {
 	render() {
 		if (this.props.winner) {
 			return (
@@ -18,4 +20,11 @@ export default class Voting extends PureComponent {
 			<Vote {...this.props} />
 		);
 	}
-};
+}
+
+export const VotingContainer = connect(state => {
+	return {
+		pair: state.getIn(['vote', 'pair']),
+		winner: state.get('winner')
+	};
+})(Voting);

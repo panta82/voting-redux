@@ -1,11 +1,13 @@
 "use strict";
 
 import React from 'react';
+import {connect} from 'react-redux';
 
 import PureComponent from './PureComponent';
+
 import Winner from './Winner';
 
-export default class Results extends PureComponent {
+export class Results extends PureComponent {
 	getPair () {
 		return this.props.pair || [];
 	}
@@ -48,4 +50,12 @@ export default class Results extends PureComponent {
 			</div>
 		);
 	}
-};
+}
+
+export const ResultsContainer = connect(state => {
+	return {
+		pair: state.getIn(['vote', 'pair']),
+		tally: state.getIn(['vote', 'tally']),
+		winner: state.get('winner'),
+	};
+})(Results);
