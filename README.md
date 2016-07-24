@@ -60,3 +60,4 @@ export default {
     
     Functional equivalent of [AbstractSingletonProxyFactoryBean](https://docs.spring.io/spring/docs/2.5.x/javadoc-api/org/springframework/aop/framework/AbstractSingletonProxyFactoryBean.html)
 - Added `doesn't remove hasVoted if pair remains the same` unit test, after a bug fix.
+- Would it make sense to separate `Foo` component and `FooContainer` into their own files? 

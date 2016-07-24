@@ -14,3 +14,10 @@ export function vote(entry) {
 		entry
 	};
 }
+
+export function next() {
+	return {
+		meta: {remote: true},
+		type: ACTIONS.NEXT
+	};
+}

@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 import PureComponent from './PureComponent';
 
+import * as actionCreators from '../action_creators';
 import Winner from './Winner';
 
 export class Results extends PureComponent {
@@ -58,4 +59,4 @@ export const ResultsContainer = connect(state => {
 		tally: state.getIn(['vote', 'tally']),
 		winner: state.get('winner'),
 	};
-})(Results);
+}, actionCreators)(Results);
