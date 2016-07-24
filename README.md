@@ -18,3 +18,4 @@
 - > In most real-world cases, there should be some kind of firewall here, probably not dissimilar to the one in the Vert.x Event Bus Bridge. Apps that have an authentication mechanism should also plug it in here.
 
     Look into this. Can you even do the authentication over socket.io? HTTPS? Headers? Send token with each message?
+- `jsdom` is interesting. Can it be used for other purposes? Scraper?
