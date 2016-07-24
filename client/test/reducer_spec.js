@@ -48,6 +48,32 @@ describe('reducer', () => {
 			});
 		});
 
+		it(`doesn't remove hasVoted if pair remains the same`, () => {
+			const state = fromJS({
+				vote: {
+					pair: ['A', 'B'],
+					tally: { 'A': 1 }
+				},
+				hasVoted: 'A'
+			});
+			const action = {type: ACTIONS.SET_STATE, state: {
+				vote: {
+					pair: ['A', 'B'],
+					tally: { 'A': 2 }
+				}
+			}};
+
+			const nextState = reducer(state, action);
+
+			expect(nextState).to.equal(fromJS({
+				vote: {
+					pair: ['A', 'B'],
+					tally: { 'A': 2 }
+				},
+				hasVoted: 'A'
+			}));
+		});
+
 		it(`removes hasVoted if pair changes`, () => {
 			const state = fromJS({
 				vote: {

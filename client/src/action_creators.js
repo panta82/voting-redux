@@ -9,6 +9,7 @@ export function setState(state) {
 
 export function vote(entry) {
 	return {
+		meta: {remote: true},
 		type: ACTIONS.VOTE,
 		entry
 	};
