@@ -20,3 +20,8 @@
     Look into this. Can you even do the authentication over socket.io? HTTPS? Headers? Send token with each message?
 - `jsdom` is interesting. Can it be used for other purposes? Scraper?
 - Webpack config syntax is a disaster
+- Switched from `createClass` to ES6 classes (https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
+- Needed to add ` --watch-extensions jsx` to the mocha command line for watch to work on jsx files
+- Why is the author consistently adding parenthesis around single argument lambdas? You can just do `x => use(x)`.
+- If you already set up a whole testing  workflow and write a complicated unit test, at least perform multiple asserts. Don't do just one.
+- Unlike business logic testing, UX testing feels like pointless busywork.
