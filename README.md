@@ -52,7 +52,7 @@ export default {
     TODO: Move most of the stuff outside of `index.jsx`
 - I don't like all this port hardcoding all over the place.
 - In `mapStateToProps`, is there a better way to yank out these nested properties? This is JAVA-like verbose, with none of the JAVA-like type safety.
-- Why doesn't IDEA add `"use strict"` to the top of the new file? Instead, it waits for me to create a new function and then adds it inside the function. Silly.
+- Why doesn't IDEA add `"use strict"` to the top of a new file? Instead, it waits for me to create a new function and then adds it inside the function. Silly.
 -  Oh, come on.
     ```javascript
     export default socket => store => next => action => {};

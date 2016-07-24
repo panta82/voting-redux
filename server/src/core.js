@@ -58,6 +58,11 @@ export function next(state) {
  * @param entry
  */
 export function vote(state, entry) {
+	const pair = state.get('pair');
+	if (!pair.contains(entry)) {
+		return state;
+	}
+
 	return state.updateIn(
 		['tally', entry],
 		0,

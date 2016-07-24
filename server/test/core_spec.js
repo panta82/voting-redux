@@ -1,7 +1,7 @@
 "use strict";
 
 import {expect} from 'chai';
-import {List, Map} from 'immutable';
+import {List, Map, fromJS} from 'immutable';
 
 import {setEntries, next, vote} from '../src/core';
 
@@ -143,6 +143,26 @@ describe('application logic', () => {
 					'A': 4,
 					'B': 2
 				})
+			}));
+		});
+
+		it(`doesn't update tally for invalid votes`, () => {
+			const state = fromJS({
+				pair: ['A', 'B'],
+				tally: {
+					'A': 3,
+					'B': 2
+				}
+			});
+
+			const nextState = vote(state, 'C');
+
+			expect(nextState).to.equal(fromJS({
+				pair: ['A', 'B'],
+				tally: {
+					'A': 3,
+					'B': 2
+				}
 			}));
 		});
 	});
