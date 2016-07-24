@@ -43,3 +43,4 @@ export default {
 - You need to have `import React from 'react';`, even if you're not actually using the `React` object. I guess JSX presumes there is global "React" thing? Or something?
 - I blew my single inheritance allowance on `PureComponent` that encapsulates the clunky `shouldComponentUpdate` setup.
 - Pure components seem to be the *real* reason to use immutable in react. Doesn't leave much of a reason on the server, though.
+- Despite best effort, no way to make babel compiled code debugable in JetBrains tools. Not even frontend code. This sucks.
