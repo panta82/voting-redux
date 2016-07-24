@@ -8,6 +8,8 @@ import PureComponent from './PureComponent';
 import Vote from './Vote';
 import Winner from './Winner';
 
+import * as actionCreators from '../action_creators';
+
 export class Voting extends PureComponent {
 	render() {
 		if (this.props.winner) {
@@ -25,6 +27,7 @@ export class Voting extends PureComponent {
 export const VotingContainer = connect(state => {
 	return {
 		pair: state.getIn(['vote', 'pair']),
-		winner: state.get('winner')
+		winner: state.get('winner'),
+		hasVoted: state.get('hasVoted')
 	};
-})(Voting);
+}, actionCreators)(Voting);
