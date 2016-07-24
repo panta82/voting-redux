@@ -109,15 +109,21 @@ body {
 .results .management button {
 	border: 0;
 	background-color: black;
-	color: #aaa;
+	color: #aaa!important;
 }
-.results .management .next {
+.results .management .next,
+.results .management .restart {
 	flex: 1;
 }
 
 /* Winner View */
 
 .winner {
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	font-size: 4rem;
 	text-align: center;
 }

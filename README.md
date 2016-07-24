@@ -1,8 +1,8 @@
 # Voting Redux
 
-##### Following: http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html
+#### Following: http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html
 
-#### Notes:
+### Notes:
 
 - I'll replace hardcoded `action` strings with the hash-as-enum pattern.
 ```
@@ -61,3 +61,5 @@ export default {
     Functional equivalent of [AbstractSingletonProxyFactoryBean](https://docs.spring.io/spring/docs/2.5.x/javadoc-api/org/springframework/aop/framework/AbstractSingletonProxyFactoryBean.html)
 - Added `doesn't remove hasVoted if pair remains the same` unit test, after a bug fix.
 - Would it make sense to separate `Foo` component and `FooContainer` into their own files? 
+- Security method in excecise 3 isn't all that impressive, but I guess it would stop a casual cheater.
+

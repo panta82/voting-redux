@@ -23,7 +23,16 @@ export class Results extends PureComponent {
 	render() {
 		if (this.props.winner) {
 			return (
-				<Winner ref="winner" winner={this.props.winner} />
+				<div className="results">
+					<Winner ref="winner" winner={this.props.winner} />
+					<div className="management">
+						<button ref="restart"
+							className="restart"
+							onClick={this.props.restart}>
+							Restart
+						</button>
+					</div>
+				</div>
 			);
 		}
 
@@ -46,7 +55,9 @@ export class Results extends PureComponent {
 				<div className="management">
 					<button ref="next"
 						className="next"
-						onClick={this.props.next} />
+						onClick={this.props.next}>
+						Next
+					</button>
 				</div>
 			</div>
 		);
