@@ -19,3 +19,4 @@
 
     Look into this. Can you even do the authentication over socket.io? HTTPS? Headers? Send token with each message?
 - `jsdom` is interesting. Can it be used for other purposes? Scraper?
+- Webpack config syntax is a disaster
