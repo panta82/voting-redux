@@ -2,7 +2,7 @@
 
 #### Following: http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html
 
-### Notes:
+### Notes
 
 - I'll replace hardcoded `action` strings with the hash-as-enum pattern.
 ```
@@ -66,4 +66,20 @@ export default {
 - Restart was more difficult to add than anticipated.
 - Babel compiler doesn't know how to translate `import * from '../src/core';` into `import * from '../dist/core';`. Reiterating, using this crap in node is stupid.
  
-### Deployment instructions
+### Deployment
+
+I worked out some kind of deployment strategy.
+
+#### Server
+
+I'm using the single `index.js` entry point. It picks either `src` or `dist` to load, based on `NODE_ENV` enviromental var. Steps to deploy:
+ 
+- Get code to server (git deploy, rsync...)
+- Run `npm run build` to generate dist files
+- Run `NODE_ENV=production node index.js` to start the server
+- Keep alive with pm2 or something
+
+Optionally, set `PORT=` to change the port.
+Optionally, call with path to alternative `entries.json`.
+ 
+ 
