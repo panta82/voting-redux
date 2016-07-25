@@ -82,4 +82,27 @@ I'm using the single `index.js` entry point. It picks either `src` or `dist` to 
 Optionally, set `PORT=` to change the port.
 Optionally, call with path to alternative `entries.json`.
  
+#### Client
+
+Webpack has a -p switch, to trigger some production optimizations.
+
+Also, I added this:
+
+```
+    plugins: [
+		new webpack.DefinePlugin({
+			'process.env':{
+				'NODE_ENV': JSON.stringify('production')
+			}
+		})
+	]
+```
+
+This will add a magical webpack thing, which will trigger react to lose a lot of weight (verbose error messages, etc). Final bundle size, around 300kb.
  
+Steps to deploy:
+ 
+- `npm run build`
+- Get the `dist` directory to server
+- Point apache/nginx at it (or run `python3 -m http.server` to test it out)
+
