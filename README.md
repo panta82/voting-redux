@@ -64,3 +64,6 @@ export default {
 - Security method in excecise 3 isn't all that impressive, but I guess it would stop a casual cheater.
 - Stupid immutable objects make everything harder.
 - Restart was more difficult to add than anticipated.
+- Babel compiler doesn't know how to translate `import * from '../src/core';` into `import * from '../dist/core';`. Reiterating, using this crap in node is stupid.
+ 
+### Deployment instructions
