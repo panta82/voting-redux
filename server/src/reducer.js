@@ -2,7 +2,7 @@
 
 import ACTIONS from './actions';
 
-import {setEntries, next, vote, restart, INITIAL_STATE} from '../src/core';
+import {setEntries, next, vote, restart, INITIAL_STATE} from './core';
 
 /**
  * @param {Map} state

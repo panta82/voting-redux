@@ -1,5 +1,7 @@
 .idea
 node_modules/
+server/dist
+npm-debug.log
 
 client/dist/**/*
 !client/dist/index.html

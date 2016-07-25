@@ -1,27 +1,11 @@
-const path = require('path');
+var path = require('path');
 
-import makeStore from './src/store';
-import startServer from './src/server';
-import ACTIONS from './src/actions';
+var entries = require(path.resolve(__dirname, 'entries.json'));
 
-const PORT = 8090;
+var appDir = process.env['NODE_ENV'] === 'production' ? 'dist' : 'src';
 
-export const store = makeStore(
-	store => next => action => {
-		console.log(JSON.stringify(action));
-		next(action);
-	}
-);
+var app = require('./' + appDir + '/app').app;
 
-store.dispatch({
-	type: ACTIONS.SET_ENTRIES,
-	entries: require(path.resolve(__dirname, 'entries.json'))
-});
+var port = process.env['PORT'] || 8090;
 
-store.dispatch({
-	type: ACTIONS.NEXT
-});
-
-startServer(store, PORT);
-
-console.log(`Listening on ${PORT}`);
+app(port, entries);
